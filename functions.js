@@ -15,6 +15,9 @@ const winningCombinations = [
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+
 ];
 
 const winningYellowButtons = [];
@@ -44,15 +47,12 @@ function addEventToButton() {
         for (const combination of winningCombinations) {
           const [a, b, c] = combination;
 
-          if (
-            a === winningYellowButtons[0] &&
-            b === winningYellowButtons[1] &&
-            c === winningYellowButtons[2]
-          ) {
+          if (winningYellowButtons.includes(a) && winningYellowButtons.includes(b) && winningYellowButtons.includes(c)) {
+            console.log('sim')
 
             showWinner('<img src="circle.svg">');
             
-            // resetGame();
+           
           }
         }
         
@@ -73,12 +73,9 @@ function addEventToButton() {
         for (const combination of winningCombinations) {
           const [a, b, c] = combination;
 
-          if (
-            a === winningBlueButtons[0] &&
-            b === winningBlueButtons[1] &&
-            c === winningBlueButtons[2]
-          ) {
-           showWinner('<img src="close.svg">');
+          if (winningBlueButtons.includes(a) && winningBlueButtons.includes(b) && winningBlueButtons.includes(c)) {
+           console.log('sim')
+            showWinner('<img src="close.svg">');
             
 
             // resetGame();
