@@ -5,6 +5,7 @@ const textContainer = document.querySelector('span');
 const boardContainer = document.querySelector('.grid-container');
 const resetButton = document.querySelector('.reset-button');
 
+
 const buttonArr = Array.from(buttons);
 
 const winningCombinations = [
@@ -48,9 +49,10 @@ function addEventToButton() {
             b === winningYellowButtons[1] &&
             c === winningYellowButtons[2]
           ) {
-            alert("O ganhou!");
+
+            showWinner('<img src="circle.svg">');
             
-            resetGame();
+            // resetGame();
           }
         }
         
@@ -76,8 +78,10 @@ function addEventToButton() {
             b === winningBlueButtons[1] &&
             c === winningBlueButtons[2]
           ) {
-            alert("X ganhou!");
-            resetGame();
+           showWinner('<img src="close.svg">');
+            
+
+            // resetGame();
             
           } 
         }
@@ -88,8 +92,9 @@ function addEventToButton() {
         player = "circle";
       }
       
-      
+
     });
+
 
   }
   
@@ -118,12 +123,24 @@ function resetGame() {
     button.style.backgroundColor = "transparent";
     winningBlueButtons.length = 0;
     winningYellowButtons.length = 0;
-    
-    
+
   })
+  
+}
+const message = document.createElement("div");
+
+function showWinner(winner) {
+
+  message.innerHTML = `O jogador ${winner} ganhou!`;
+  textContainer.remove();
+  boardContainer.replaceWith(message);
+  resetButton.remove();
+
+  location.reload();
   
 }
 
 
 newGame();
+
 addEventToButton();

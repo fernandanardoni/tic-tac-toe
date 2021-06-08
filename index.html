@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/keycap-number-sign_23-fe0f-20e3.png" type="image/x-icon">
     <title>Jogo da Velha</title>
 </head>
 <body>
+    
     <button class="play-button">JOGAR!</button>
-    <span>Vez do jogador&nbsp;<p class="player-text">amarelo</p></span>
+    <span>Vez do jogador&nbsp;<p class="player-text"><img src="./circle.svg" alt=""></p></span>
+    
     <div class="grid-container">
         <div>
             <button class="grid-child" ></button>
@@ -39,7 +42,8 @@
             <button class="grid-child"></button>
         </div>
     </div>
-    <button class="reset-button" onclick="resetGame()">LIMPAR</button> 
+    <button class="reset-button" onclick="resetGame()">REINICIAR</button> 
+    <footer>Feito com ❤️ por <strong>Fernanda Nardoni</strong></footer>
 
 <script src="functions.js"></script>
 
