@@ -21,19 +21,20 @@ const winningBlueButtons = [];
 
 const playerText = document.querySelector(".player-text");
 
-let player = "amarelo";
+let player = "circle";
 
 function addEventToButton() {
 
   for (const button of buttonArr) {
-    
 
     button.addEventListener("click", function () {
 
-      if (player === "amarelo") {
+      if (player === "circle") {
 
-        button.style.backgroundColor = "yellow";
+        
         button.innerHTML = '<img src="circle.svg">';
+        
+        
 
         winningYellowButtons.push(parseInt(buttonArr.indexOf(button)));
         winningYellowButtons.sort((a, b) => a - b);
@@ -47,20 +48,22 @@ function addEventToButton() {
             b === winningYellowButtons[1] &&
             c === winningYellowButtons[2]
           ) {
-            alert("amarelo ganhou!");
+            alert("O ganhou!");
+            
             resetGame();
           }
         }
+        
+        console.log("circle", winningYellowButtons);
+        
+        playerText.innerHTML = '<img src="close.svg">';
+        player = "cross";
+        
+      } else if (player === "cross") {
 
-        console.log("amarelo", winningYellowButtons);
-
-        playerText.textContent = "azul";
-        player = "azul";
-
-      } else if (player === "azul") {
-
-        button.style.backgroundColor = "blue";
+        
         button.innerHTML = '<img src="close.svg">';
+        
 
         winningBlueButtons.push(parseInt(buttonArr.indexOf(button)));
         winningBlueButtons.sort((a, b) => a - b);
@@ -73,16 +76,16 @@ function addEventToButton() {
             b === winningBlueButtons[1] &&
             c === winningBlueButtons[2]
           ) {
-            alert("azul ganhou!");
+            alert("X ganhou!");
             resetGame();
             
           } 
         }
         
-        console.log("azul", winningBlueButtons);
+        console.log("cross", winningBlueButtons);
         
-        playerText.textContent = "amarelo";
-        player = "amarelo";
+        playerText.innerHTML = '<img src="circle.svg">';
+        player = "circle";
       }
       
       
@@ -92,7 +95,6 @@ function addEventToButton() {
   
 }
 
-addEventToButton();
 
 
 function newGame() {
@@ -101,26 +103,27 @@ function newGame() {
     textContainer.style.display = "flex";
     boardContainer.style.display = "grid";
     resetButton.style.display = "block";
-    playButton.style.display = "none"
+    playButton.style.display = "none";
     
   })
 } 
 
-
-newGame();
 
 
 function resetGame() {
   
   buttonArr.forEach((button) => {
     
-      button.innerHTML = null;
-      button.style.backgroundColor = "transparent";
-      winningBlueButtons.length = 0;
-      winningYellowButtons.length = 0;
+    button.innerHTML = null;
+    button.style.backgroundColor = "transparent";
+    winningBlueButtons.length = 0;
+    winningYellowButtons.length = 0;
     
     
   })
+  
 }
 
-resetGame();
+
+newGame();
+addEventToButton();
